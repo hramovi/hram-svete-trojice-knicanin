@@ -3,585 +3,1740 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="format-detection" content="telephone=no">
-    <title>☦︎ Храм Свете Тројице - Книћанин</title>
-
-    <link rel="icon" href="./osnovne slike/храм лого.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="./style.css" />
+    <title>Храм Свете Тројице – Книћанин</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cinzel:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* LIGHTBOX STIL */
-      #lightbox {
-        display: none;
-        position: fixed;
+      :root {
+        --gold: #c9952a;
+        --gold-light: #e8c06a;
+        --gold-pale: #f5e6c0;
+        --deep: #2c1a0e;
+        --brown: #5c3a1e;
+        --cream: #fbf6ee;
+        --cream-dark: #f2e8d5;
+        --red-icon: #8b1a1a;
+        --blue-icon: #1a3a5c;
+        --text: #2c1a0e;
+        --text-light: #6b4c2a;
+        --border: #d4a854;
+        --white: #fffdf8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--cream);
+        color: var(--text);
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 18px;
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+
+      /* ── HEADER ── */
+      header {
+        background: linear-gradient(
+          180deg,
+          #1a0f06 0%,
+          #2c1a0e 60%,
+          #3d2410 100%
+        );
+        border-bottom: 3px solid var(--gold);
+        padding: 0;
+        position: sticky;
         top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        justify-content: center;
+        z-index: 100;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .header-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
         align-items: center;
-        z-index: 9999;
+        gap: 18px;
+        padding: 14px 24px;
       }
 
-      #lightbox img {
-        max-width: 90%;
-        max-height: 90%;
+      .church-emblem {
+        width: 62px;
+        height: 62px;
+        flex-shrink: 0;
+        filter: drop-shadow(0 2px 8px rgba(201, 149, 42, 0.5));
       }
 
-      #prev,
-      #next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 60px;
-        color: white;
+      .header-text h1 {
+        font-family: "Cinzel", serif;
+        font-size: 1.35rem;
+        color: var(--gold-light);
+        letter-spacing: 0.08em;
+        line-height: 1.2;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+      }
+
+      .header-text .subtitle {
+        font-family: "IM Fell English", serif;
+        font-style: italic;
+        color: #c4a96a;
+        font-size: 0.9rem;
+        letter-spacing: 0.04em;
+        opacity: 0.85;
+      }
+
+      /* ── NAVIGATION ── */
+      nav {
+        position: sticky;
+        top: 90px;
+        z-index: 200;
+        background: linear-gradient(180deg, #3d2410 0%, #2c1a0e 100%);
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .nav-inner::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab-btn {
         background: none;
         border: none;
+        color: #c4a96a;
+        font-family: "Cinzel", serif;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        padding: 14px 22px;
         cursor: pointer;
-        padding: 20px;
+        white-space: nowrap;
+        position: relative;
+        transition: color 0.25s;
+        text-transform: uppercase;
       }
 
-      #prev {
-        left: 20px;
+      .tab-btn::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
+        height: 2px;
+        background: var(--gold);
+        transition:
+          left 0.25s,
+          right 0.25s;
       }
-      #next {
-        right: 20px;
+
+      .tab-btn:hover {
+        color: var(--gold-light);
+      }
+      .tab-btn.active {
+        color: var(--gold-light);
+      }
+      .tab-btn.active::after {
+        left: 0;
+        right: 0;
+      }
+
+      /* ── HERO BANNER ── */
+      .hero {
+        background: linear-gradient(
+          160deg,
+          #2c1a0e 0%,
+          #4a2c10 40%,
+          #6b3d18 100%
+        );
+        color: var(--cream);
+        text-align: center;
+        padding: 64px 24px 54px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse at 30% 50%,
+            rgba(201, 149, 42, 0.12) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at 70% 30%,
+            rgba(201, 149, 42, 0.08) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      .hero-ornament {
+        font-size: 2.2rem;
+        color: var(--gold);
+        margin-bottom: 10px;
+        display: block;
+        letter-spacing: 0.3em;
+      }
+
+      .hero h2 {
+        font-family: "IM Fell English", serif;
+        font-size: 1.9rem;
+        font-weight: 400;
+        font-style: italic;
+        color: var(--gold-light);
+        margin-bottom: 8px;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        color: #c4a96a;
+        font-size: 1.05rem;
+        opacity: 0.85;
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+      }
+
+      /* ── MAIN CONTENT AREA ── */
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .content-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 24px 60px;
+      }
+
+      /* ── SECTION TITLE ── */
+      .section-title {
+        font-family: "Cinzel", serif;
+        font-size: 1.3rem;
+        color: var(--brown);
+        letter-spacing: 0.12em;
+        text-align: center;
+        margin-bottom: 36px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+
+      /* ── NEWS / POSTS ── */
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 28px;
+      }
+
+      .post-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        overflow: hidden;
+        box-shadow: 0 2px 16px rgba(44, 26, 14, 0.08);
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .post-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(44, 26, 14, 0.15);
+      }
+
+      .post-card-img {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        display: block;
+        background: var(--cream-dark);
+      }
+
+      .post-card-img.placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: var(--gold);
+      }
+
+      .post-card-body {
+        padding: 18px 20px 22px;
+      }
+
+      .post-date {
+        font-size: 0.78rem;
+        color: var(--text-light);
+        letter-spacing: 0.08em;
+        font-family: "Cinzel", serif;
+        margin-bottom: 6px;
+      }
+
+      .post-card h3 {
+        font-family: "IM Fell English", serif;
+        font-size: 1.15rem;
+        font-weight: 400;
+        color: var(--deep);
+        margin-bottom: 8px;
+        line-height: 1.35;
+      }
+
+      .post-card p {
+        font-size: 0.92rem;
+        color: var(--text-light);
+        line-height: 1.55;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .read-more {
+        display: inline-block;
+        margin-top: 12px;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+        color: var(--gold);
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--gold-pale);
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+
+      .post-card:hover .read-more {
+        color: var(--brown);
+        border-color: var(--gold);
+      }
+
+      /* ── MODAL ── */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 8, 3, 0.75);
+        z-index: 500;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 40px 16px;
+        overflow-y: auto;
+      }
+
+      .modal-overlay.open {
+        display: flex;
+      }
+
+      .modal {
+        background: var(--white);
+        border: 1px solid var(--border);
+        max-width: 720px;
+        width: 100%;
+        border-radius: 2px;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+        animation: modalIn 0.3s ease;
+        margin: auto;
+      }
+
+      @keyframes modalIn {
+        from {
+          opacity: 0;
+          transform: scale(0.96) translateY(16px);
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-header {
+        background: linear-gradient(135deg, #2c1a0e, #4a2c10);
+        padding: 22px 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .modal-header h2 {
+        font-family: "IM Fell English", serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: var(--gold-light);
+        line-height: 1.3;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        color: var(--gold);
+        font-size: 1.5rem;
+        cursor: pointer;
+        line-height: 1;
+        flex-shrink: 0;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+      }
+      .modal-close:hover {
+        opacity: 1;
+      }
+
+      .modal-body {
+        padding: 28px 28px 32px;
+      }
+
+      .modal-date {
+        font-family: "Cinzel", serif;
+        font-size: 0.78rem;
+        color: var(--text-light);
+        letter-spacing: 0.1em;
+        margin-bottom: 18px;
+        display: block;
+      }
+
+      .modal-images {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px;
+        margin-bottom: 22px;
+      }
+
+      .modal-images img {
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        border: 1px solid var(--border);
+        border-radius: 1px;
+      }
+
+      .modal-text {
+        font-size: 1rem;
+        line-height: 1.75;
+        color: var(--text);
+      }
+
+      /* ── GALLERY ── */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 14px;
+      }
+
+      .gallery-item {
+        aspect-ratio: 1;
+        overflow: hidden;
+        border: 2px solid var(--border);
+        cursor: pointer;
+        position: relative;
+        background: var(--cream-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: var(--gold);
+      }
+
+      .gallery-item:hover::after {
+        content: "🔍";
+        position: absolute;
+        inset: 0;
+        background: rgba(44, 26, 14, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        display: grid;
+        place-items: center;
+      }
+
+      .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.06);
+      }
+
+      /* ── SCHEDULE ── */
+      .schedule-wrap {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+      }
+
+      .schedule-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-top: 3px solid var(--gold);
+        padding: 22px 24px;
+        box-shadow: 0 2px 12px rgba(44, 26, 14, 0.06);
+      }
+
+      .schedule-card h3 {
+        font-family: "Cinzel", serif;
+        font-size: 0.88rem;
+        letter-spacing: 0.12em;
+        color: var(--brown);
+        margin-bottom: 14px;
+        text-transform: uppercase;
+      }
+
+      .schedule-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 7px 0;
+        border-bottom: 1px dotted var(--gold-pale);
+        font-size: 0.95rem;
+      }
+
+      .schedule-row:last-child {
+        border-bottom: none;
+      }
+      .schedule-service {
+        color: var(--text);
+      }
+      .schedule-time {
+        font-family: "Cinzel", serif;
+        font-size: 0.82rem;
+        color: var(--gold);
+        letter-spacing: 0.08em;
+      }
+
+      .schedule-note {
+        background: var(--cream-dark);
+        border-left: 3px solid var(--gold);
+        padding: 14px 18px;
+        margin-top: 28px;
+        font-style: italic;
+        color: var(--text-light);
+        font-size: 0.95rem;
+      }
+
+      /* ── DONATIONS ── */
+      .donation-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-bottom: 40px;
+      }
+
+      @media (max-width: 640px) {
+        .donation-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .donation-section h3 {
+        font-family: "Cinzel", serif;
+        font-size: 0.88rem;
+        letter-spacing: 0.12em;
+        color: var(--brown);
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .donation-section h3::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--gold-pale);
+      }
+
+      .works-list {
+        list-style: none;
+      }
+
+      .works-list li {
+        padding: 9px 0 9px 24px;
+        border-bottom: 1px dotted var(--gold-pale);
+        font-size: 0.97rem;
+        position: relative;
+        color: var(--text);
+      }
+
+      .works-list li::before {
+        content: "✦";
+        position: absolute;
+        left: 0;
+        color: var(--gold);
+        font-size: 0.65rem;
+        top: 13px;
+      }
+
+      .bank-box {
+        background: linear-gradient(135deg, #2c1a0e, #4a2c10);
+        color: var(--gold-light);
+        padding: 26px 28px;
+        border: 1px solid var(--gold);
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      .bank-box .bank-label {
+        font-family: "Cinzel", serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        opacity: 0.7;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .bank-box .account-number {
+        font-family: "Cinzel", serif;
+        font-size: 1.5rem;
+        letter-spacing: 0.25em;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+
+      .bank-box .bank-name {
+        font-size: 0.85rem;
+        opacity: 0.75;
+        font-style: italic;
+      }
+
+      .bank-box .recipient {
+        margin-top: 12px;
+        font-size: 0.9rem;
+        color: var(--gold-pale);
+        opacity: 0.9;
+      }
+
+      .donation-appeal {
+        background: var(--cream-dark);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--gold);
+        padding: 24px 28px;
+        margin-top: 32px;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--text);
+        line-height: 1.75;
+        text-align: center;
+      }
+
+      .donation-appeal cite {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.85rem;
+        color: var(--text-light);
+        font-style: normal;
+        font-family: "Cinzel", serif;
+        letter-spacing: 0.05em;
+      }
+
+      /* ── CONTACT ── */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 20px;
+      }
+
+      .contact-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        padding: 24px 22px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        box-shadow: 0 2px 12px rgba(44, 26, 14, 0.06);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      a.contact-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(44, 26, 14, 0.12);
+        border-color: var(--gold);
+      }
+
+      .contact-icon {
+        font-size: 1.8rem;
+        flex-shrink: 0;
+        width: 44px;
+        text-align: center;
+        line-height: 1;
+        margin-top: 4px;
+      }
+
+      .contact-info label {
+        display: block;
+        font-family: "Cinzel", serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+        color: var(--text-light);
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .contact-info span,
+      .contact-info p {
+        font-size: 1rem;
+        color: var(--deep);
+        font-weight: 500;
+      }
+
+      /* ── ORNAMENT DIVIDER ── */
+      .ornament {
+        text-align: center;
+        color: var(--gold);
+        font-size: 1rem;
+        letter-spacing: 0.5em;
+        margin: 36px 0 28px;
+        opacity: 0.6;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--deep);
+        border-top: 2px solid var(--gold);
+        color: #c4a96a;
+        text-align: center;
+        padding: 28px 24px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.9rem;
+      }
+
+      footer .footer-cross {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+      }
+
+      footer a {
+        color: var(--gold-light);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 600px) {
+        .header-text h1 {
+          font-size: 1.1rem;
+        }
+        .hero h2 {
+          font-size: 1.4rem;
+        }
+        .posts-grid {
+          grid-template-columns: 1fr;
+        }
+        .tab-btn {
+          padding: 12px 14px;
+          font-size: 0.72rem;
+        }
+        .modal-body {
+          padding: 20px 18px 24px;
+        }
       }
     </style>
   </head>
-
   <body>
-    <!-- TOP BAR -->
-    <div class="topnav">
-      <a
-        href="https://maps.app.goo.gl/aXDA1NPLhJdCWkgaA"
-        target="_blank"
-        class="left-link"
-      >
-        <p class="left-text">📍 Војводе Стевана Книћанина ББ, Книћанин</p>
-      </a>
-      <p id="datum-vreme">Датум и време</p>
-      <p class="right-text">
-        Контакт телефон: <span class="telefon">061-2799-386</span>
-      </p>
-    </div>
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <!-- SVG cross emblem -->
+        <svg
+          class="church-emblem"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="50"
+            cy="50"
+            r="48"
+            fill="none"
+            stroke="#C9952A"
+            stroke-width="1.5"
+            opacity="0.4"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="42"
+            fill="none"
+            stroke="#C9952A"
+            stroke-width="0.7"
+            opacity="0.25"
+          />
+          <!-- Orthodox cross -->
+          <line
+            x1="50"
+            y1="12"
+            x2="50"
+            y2="88"
+            stroke="#C9952A"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <line
+            x1="24"
+            y1="36"
+            x2="76"
+            y2="36"
+            stroke="#C9952A"
+            stroke-width="5"
+            stroke-linecap="round"
+          />
+          <line
+            x1="35"
+            y1="54"
+            x2="65"
+            y2="54"
+            stroke="#C9952A"
+            stroke-width="3.5"
+            stroke-linecap="round"
+          />
+          <!-- Slanted bottom bar -->
+          <line
+            x1="32"
+            y1="72"
+            x2="68"
+            y2="66"
+            stroke="#C9952A"
+            stroke-width="3.5"
+            stroke-linecap="round"
+          />
+          <!-- Corner ornaments -->
+          <circle cx="50" cy="12" r="2.5" fill="#C9952A" />
+          <circle cx="50" cy="88" r="2.5" fill="#C9952A" />
+        </svg>
+        <div class="header-text">
+          <h1>Храм Свете Тројице</h1>
+          <div class="subtitle">Книћанин · Епархија Банатска</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAV TABS -->
+    <nav>
+      <div class="nav-inner">
+        <button class="tab-btn active" onclick="switchTab('pocetna', this)">
+          ☦ Почетна
+        </button>
+        <button class="tab-btn" onclick="switchTab('galerija', this)">
+          Галерија
+        </button>
+        <button class="tab-btn" onclick="switchTab('bogosluzenja', this)">
+          Богослужења
+        </button>
+        <button class="tab-btn" onclick="switchTab('donacije', this)">
+          Донације
+        </button>
+        <button class="tab-btn" onclick="switchTab('kontakt', this)">
+          Контакт
+        </button>
+      </div>
+    </nav>
 
     <!-- HERO -->
-    <div class="top-container">
-      <section id="title">Сајт храма Свете Тројице - Книћанин</section>
-      <img
-        src="./osnovne slike/IMG_9414.jpeg"
-        class="profile-img"
-        alt="Храм Свете Тројице"
-      />
-      <section id="subtitle">
-        Са благословом оца Петра, помаже Бог и добродошли!
-      </section>
+    <div class="hero">
+      <span class="hero-ornament">☦ ✦ ☦</span>
+      <h2>Слава Светој Тројици</h2>
+      <p>Са благословом оца Петра Шљокића, добродошли!</p>
     </div>
 
-    <!-- CONTENT -->
-    <div class="middle-container">
-      <!-- SECTION 1 -->
-      <div class="section">
-        <img
-          src="./osnovne slike/liturgija.png"
-          alt="Храм Свете Тројице"
-          class="middle-img"
-          width="250"
-          height="170"
-        />
-        <div class="text-wrapper">
-          <h2>Распоред Богослужења за Март 2026.</h2>
-          <p class="read-more-text">
-            <strong class="bold-date">01.03.2026.</strong> Недеља-литугија у
-            09:00<br />
-            <strong class="bold-date">03.03.2026.</strong> Уторак, Света
-            Архијерејска литургија, исповест у 07:00, литургија у 07:45 *Моле се
-            верници који се причешћују да дођу пре литургије због исповести,
-            исповести у току литургије неће бити!<br />
-            <strong class="bold-date">07.03.2026.</strong> Субота-литургија у
-            09:00<br />
-            <strong class="bold-date">15.03.2026.</strong> Недеља-литургија у
-            09:00<br />
-            <strong class="bold-date">21.03.2026.</strong> Субота-литургија у
-            09:00<br />
-            <strong class="bold-date">29.03.2026.</strong> Недеља-литургија у
-            09:00
-          </p>
-          <button class="read-more-btn">Прошири текст</button>
-        </div>
-      </div>
+    <!-- ═══════════════════════════════════════
+     ТАБ: ПОЧЕТНА
+═══════════════════════════════════════ -->
+    <div id="tab-pocetna" class="tab-content active">
+      <div class="content-wrap">
+        <h2 class="section-title">Вести и Обавештења</h2>
 
-      <!-- SECTION 2 -->
-      <div class="section">
-        <img
-          src="./osnovne slike/1.png"
-          alt="Храм Свете Тројице"
-          class="middle-img"
-          width="250"
-          height="170"
-        />
-        <div class="text-wrapper">
-          <h2>Историјат храма</h2>
-          <p class="read-more-text">
-            Храм Свете Тројице грађен је четири године, у периоду између 2017. и
-            2021, захваљујући првенствено донацијама мештана. Храм који сада
-            краси сеоски парк освештао је Владика Банатски Никанор у присуству
-            великог броја верника. Саграђен је као једнобродна базилика са
-            описаним и уписаним крстом. Од како су се доселили 1953. мештани
-            нису имали православни храм. Захваљујући иницијативи Хаџи Драгана
-            Јовановића, Београђанина који је овде рођен. 2017 он је у овом парку
-            донео крст из Јерусалима и предложио мештанима да се ту подигне храм
-            што је годину дана касније почело и да се остварује. Свештеник и
-            старешина храма је од оснивања отац Петар Шљокић. Дуборези у храму
-            су рад „Атељеа Марунић“ из Земуна, а иконописац је Горан Дамјановић.
-            Донацијама мештана се и даље надограђује храм, а као главни пројекат
-            за будућност, идеја је да се направи сала у непосредној близини
-            храма, коју би мештани користили за агапе и слична дружења и сабрања
-            у православном духу.
-          </p>
-          <button class="read-more-btn">Прошири текст</button>
-        </div>
-      </div>
+        <div class="posts-grid">
+          <!-- POST 1 -->
+          <div class="post-card" onclick="openModal('modal1')">
+            <div class="post-card-img">
+              <img
+                src="osnovne slike/vaskrs-otac-petar.jpeg"
+                alt="Васкрс"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="post-card-body">
+              <div class="post-date">12. април 2026.</div>
+              <h3>Васкршња литургија</h3>
+              <p>
+                Са радошћу вас обавештавамо да ће се у недељу 12. априла 2026.
+                године одржати Света Васркшња литургија у нашем храму са
+                почетком у 06:00. Након богослужења позивамо верујући народ да
+                се окупи испред храма, да се сви послужимо и подружимо!
+              </p>
+              <span class="read-more">Прочитај више →</span>
+            </div>
+          </div>
 
-      <!-- SECTION 3 -->
-      <div class="section">
-        <img
-          src="./bogosluzenje/1.png"
-          alt="Богослужење"
-          class="middle-img"
-          width="250"
-          height="170"
-        />
-        <div class="text-wrapper">
-          <h2>Богослужења и слава храма</h2>
-          <p class="read-more-text">
-            У храму се сваке недеље врши литургијско богослужење, некада
-            суботом, а некада недељом, а повремено и у току великих празника ван
-            дана викенда. Распоред богослужења можете испратити на инстаграм
-            страници или у вајбер групи (Линкови до истих на дну странице).
-            Света Тројица (Духови) је један од највећих хришћанских празника,
-            којим се обележава Силазак Светог Духа на апостоле, 50. дан после
-            Васкрса и 10. након Вазнесења, слави се три дана, а цркве и куће се
-            украшавају зеленилом (травом, цвећем), плету венчићи, а у народу је
-            и популарна крсна слава многих породица и градова (Краљево,
-            Крушевац, Пожаревац, итд.). Овај празник се слави у знак сећања на
-            догађај који се сматра рођењем Цркве, када су апостоли добили моћ да
-            проповедају јеванђеље на различитим језицима. Значај празника:
-            Црквени: Празник се назива и Духови и Педесетница, а означава
-            силазак Светог Духа на апостоле, чиме су добили дар говора на разним
-            језицима и снагу да шире хришћанство. Народни: Крсна слава: Многе
-            породице, као и градови попут Краљева, Крушевца, Пожаревца, славе
-            Тројицу као своју славу. Еснафска слава: Трговци славе овај празник.
-            Дан МУП-а и полиције: У знак сећања на улогу српске жандармерије у
-            догађајима код Чукур-чесме 1862. године. Обичаји: Украшавање:
-            Храмови и куће се украшавају свежом травом, зеленилом и цвећем.
-            Венчићи: Плетe се венац од траве и цвећа који се односи кући и
-            ставља поред иконе. Литије: У многим крајевима, посебно у Шумадији,
-            организују се литије до поља и винограда. Три дана: Празник се слави
-            три дана, а читава следећа седмица је "трапава" (без поста). Када се
-            слави: Увек пада у недељу, 50. дан по Васкрсу, и 10. дан по
-            Христовом Вазнесењу (Спасовдан).
-          </p>
-          <button class="read-more-btn">Прошири текст</button>
-        </div>
-      </div>
+          <!-- POST 2 -->
+          <div class="post-card" onclick="openModal('modal2')">
+            <div class="post-card-img">
+              <img
+                src="arhijerejska-liturgija-03032026/2.png"
+                alt="Архијерејска литургија"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="post-card-body">
+              <div class="post-date">03. март 2026.</div>
+              <h3>Архијерејска Литургија – Посета Владике</h3>
+              <p>
+                У уторак, 03. марта, у нашем храму је служена Свечана
+                Архијерејска Литургија. Владика банатски Никанор је предводио
+                богослужење уз присуство многих верника из целе парохије и
+                околних села...
+              </p>
+              <span class="read-more">Прочитај више →</span>
+            </div>
+          </div>
 
-      <!-- SECTION 4 -->
-      <div class="section">
-        <img
-          src="./osnovne slike/knicanin.png"
-          alt="Книћанин"
-          class="middle-img"
-          width="250"
-          height="170"
-        />
-        <div class="text-wrapper">
-          <h2>Книћанин</h2>
-          <p class="read-more-text">
-            Книћанин је насеље града Зрењанина у Средњобанатском округу. Према
-            попису из 2022. било је 1384 становника. Налази се на левој обали
-            Тисе. У непосредној близини се река Бегеј улива у Тису, а на само 5
-            км од Книћанина се Тиса улива у Дунав. Место су населили Немци из
-            околине Великог Бечкерека 1865-1866. године. Првобитно је добило име
-            по аустријском престолонаследнику Рудолфу, Рудолфсгнад. Село након
-            насељавања српског становништва добија име по војводи Стевану
-            Книћанину, који је био вођа српских добровољаца током револуције у
-            Српској Војводини 1848/1849. године. Било је то августа 1924.
-            године, решењем Министарства унутрашњих дела Краљевине СХС. Пре
-            Другог светског рата село је имало око 3000 становника, углавном
-            Немаца. После рата су партизани село користили као концентрациони
-            логор за Немце. Данас у селу постоји споменик жртвама над масовном
-            гробницом, који је подигнут заједничком акцијом Срба и Немаца.
-          </p>
-          <button class="read-more-btn">Прошири текст</button>
+          <!-- POST 3 -->
+          <div class="post-card" onclick="openModal('modal3')">
+            <div class="post-card-img placeholder">
+              <img
+                src="sveti-nikola-2025/3.png"
+                alt="Свети Никола 2025"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div class="post-card-body">
+              <div class="post-date">19. децембар2025</div>
+              <h3>Свети Никола 2025.</h3>
+              <p>Слава Свети Никола у нашем храму, 2025. године.</p>
+              <span class="read-more">Прочитај више →</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- GALERIJA THUMBS -->
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <a href="#" class="gallery-link" data-target="liturgija">
-          <img src="./arhijerejska-liturgija-03032026/glavna.jpeg" />
-          <p><b>Света архијерејска литургија 03.03.2026.</b></p>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <a href="#" class="gallery-link" data-target="izgradnja">
-          <img src="./izgradnja/IMG_9437.jpeg" />
-          <p><b>Галерија слика изградње храма</b></p>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <a href="#" class="gallery-link" data-target="bogosluzenje">
-          <img src="./bogosluzenje/IMG_9455.jpeg" />
-          <p><b>Галерија слика Богослужења</b></p>
-        </a>
-      </div>
-      <div class="gallery-item">
-        <a href="#" class="gallery-link" data-target="litija">
-          <img src="./litija/IMG_9463.jpeg" />
-          <p><b>Галерија слика Литија</b></p>
-        </a>
+    <!-- ═══════════════════════════════════════
+     ТАБ: ГАЛЕРИЈА
+═══════════════════════════════════════ -->
+    <div id="tab-galerija" class="tab-content">
+      <div class="content-wrap">
+        <h2 class="section-title">Галерија</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="sveti-nikola-2025/3.png"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="bogosluzenje/1.png"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="litija/IMG_9463.jpeg"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="arhijerejska-liturgija-03032026/1.png"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="izgradnja/IMG_9434.jpeg"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="osnovne slike/1.png"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="bogosluzenje/IMG_9454.jpeg"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="litija/IMG_9465.jpeg"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="bogosluzenje/IMG_9467.jpeg"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="litija/IMG_9466.jpeg"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="arhijerejska-liturgija-03032026/2.png"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="bogosluzenje/IMG_9469.jpeg"
+              alt=""
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+        </div>
+        <div class="ornament">✦ ✦ ✦</div>
+        <p
+          style="
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 1.5rem;
+          "
+        >
+          Ако имате лепе фотографије које бисте волели да додамо, контактирајте
+          нас!<br />
+        </p>
       </div>
     </div>
 
-    <!-- GALERIJE -->
-    <div id="gallery-container">
-      <div class="gallery-section" data-id="liturgija" style="display: none">
-        <div class="section-title">
-          <h3>Света архијерејска литургија 03.03.2026.</h3>
+    <!-- ═══════════════════════════════════════
+     ТАБ: БОГОСЛУЖЕЊА
+═══════════════════════════════════════ -->
+    <div id="tab-bogosluzenja" class="tab-content">
+      <div class="content-wrap">
+        <h2 class="section-title">Распоред Богослужења - Март 2026.</h2>
+
+        <div class="schedule-wrap">
+          <div class="schedule-card">
+            <h3>Недеља - 01.03.2026.</h3>
+            <div class="schedule-row"></div>
+            <div class="schedule-row">
+              <span class="schedule-service">Света Литургија</span>
+              <span class="schedule-time">9:00</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Уторак - 03.03.2026.</h3>
+            <div class="schedule-row">
+              <span class="schedule-service"
+                >Света Архијерејска литургија, исповест у 07:00, литургија у
+                07:45 <br /><br />*Моле се верници који се причешћују да дођу
+                пре литургије због исповести, исповести у току литургије неће
+                бити!</span
+              >
+              <span class="schedule-time">07:45</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Субота - 07.03.2026.</h3>
+            <div class="schedule-row">
+              <span class="schedule-service">Литургија</span>
+              <span class="schedule-time">09:00</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Недеља - 15.03.2026.</h3>
+            <div class="schedule-row">
+              <span class="schedule-service">Литургија</span>
+              <span class="schedule-time">9:00</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Субота - 21.03.2026.</h3>
+            <div class="schedule-row">
+              <span class="schedule-service">Литургија</span>
+              <span class="schedule-time">9:00</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Недеља - 29.03.2026.</h3>
+            <div class="schedule-row">
+              <span class="schedule-service">Литургија</span>
+              <span class="schedule-time">9:00</span>
+            </div>
+          </div>
         </div>
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="./arhijerejska-liturgija-03032026/glavna.jpeg" />
+
+        <div class="schedule-note">
+          ✦ Распоред може бити измењен током постова и великих празника. Пратите
+          нас на друштвеним мрежама или контактирајте свештеника за тачно
+          обавештење.
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+     ТАБ: ДОНАЦИЈЕ
+═══════════════════════════════════════ -->
+    <div id="tab-donacije" class="tab-content">
+      <div class="content-wrap">
+        <h2 class="section-title">Донације и Обнова Храма</h2>
+
+        <div class="donation-grid">
+          <div class="donation-section">
+            <h3>Радови у Току</h3>
+            <ul class="works-list">
+              <li>Уређење унутрашњости</li>
+              <li>Сакупљање пелета за грејанје</li>
+            </ul>
           </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/866b5860-cc22-47ca-9a1d-c560fc3f4763.jpeg"
+
+          <div class="donation-section">
+            <h3>Планирани Радови</h3>
+            <ul class="works-list">
+              <li>Изградња парохијског дома</li>
+              <li>Изградња надстрешнице</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bank-box">
+          <div class="bank-label">
+            За помоћ храму и жиро рачун за донације, контактирајте оца Петра
+          </div>
+          <!--           <div class="account-number">160 – XXXX – XX</div>
+          <div class="bank-name">Banca Intesa / Raiffeisen Bank</div>
+          <div class="recipient">
+            Прималац: Храм Свете Тројице, Книћанин<br />Позив на број: 97 – 2024
+          </div> -->
+        </div>
+
+        <div class="ornament">✦ ✦ ✦</div>
+
+        <div class="donation-appeal">
+          „Ко сеје штедљиво, штедљиво ће и жети; а ко сеје обилно, обилно ће и
+          жети. Нека свако да онолико колико је срцем одлучио, не у жалости или
+          из нужде: јер Бог воли онога ко даје радосно."
+          <cite>— 2. Коринћанима 9:6–7</cite>
+        </div>
+
+        <div class="ornament">✦</div>
+        <p
+          style="
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            max-width: 560px;
+            margin: 0 auto;
+          "
+        >
+          Свака помоћ – велика или мала – прима се са захвалношћу и уноси у
+          књигу добротвора. За додатне информације и друге начине помоћи,
+          <a
+            href="#"
+            onclick="
+              switchTab('kontakt', document.querySelectorAll('.tab-btn')[4])
+            "
+            style="color: var(--gold)"
+            >контактирајте нас</a
+          >.
+        </p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+     ТАБ: КОНТАКТ
+═══════════════════════════════════════ -->
+    <div id="tab-kontakt" class="tab-content">
+      <div class="content-wrap">
+        <h2 class="section-title">Контакт</h2>
+
+        <div class="contact-grid">
+          <div class="contact-card" style="cursor: pointer">
+            <div class="contact-icon">📍</div>
+            <a
+              href="https://www.google.com/maps/place/%D0%A1%D1%80%D0%BF%D1%81%D0%BA%D0%B0+%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%D1%81%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0+%D1%86%D1%80%D0%BA%D0%B2%D0%B0+%D0%A1%D0%B2%D0%B5%D1%82%D0%B5+%D0%A2%D1%80%D0%BE%D1%98%D0%B8%D1%86%D0%B5/@45.1866387,20.316024,17z/data=!4m6!3m5!1s0x475aef7cd9845187:0x34c8e310bd827d81!8m2!3d45.1866387!4d20.316024!16s%2Fg%2F11flkbx4dk"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="display: block; color: inherit; text-decoration: none"
+            >
+              <div class="contact-info">
+                <label>Адреса</label>
+                <span style="word-break: break-word">
+                  Војводе Стевана Книћанина ББ, Книћанин<br />
+                  Епархија Банатска<br />
+                  Србија
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <a class="contact-card" href="tel:+381XXXXXXXX">
+            <div class="contact-icon">📞</div>
+            <div class="contact-info">
+              <label>Контакт телефон (Отац Петар Шљокић)</label>
+              <span>061-2799-386</span>
+            </div>
+          </a>
+
+          <a class="contact-card" href="mailto:hram.knicanin@gmail.com">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-info">
+              <label>Е-Пошта</label>
+              <span style="word-break: break-word">
+                hram.svete.trojice.knicanin@gmail.com
+              </span>
+            </div>
+          </a>
+
+          <a
+            class="contact-card"
+            href="https://www.instagram.com"
+            target="_blank"
+          >
+            <div class="contact-icon">📷</div>
+            <div class="contact-info">
+              <label>Instagram</label>
+              <span style="word-break: break-word">
+                https://www.instagram.com/hram.svete.trojice.knicanin</span
+              >
+            </div>
+          </a>
+        </div>
+
+        <div class="ornament">✦ ✦ ✦</div>
+
+        <!--         <div
+          style="
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 28px 28px 32px;
+            max-width: 520px;
+            margin: 0 auto;
+          "
+        >
+          <h3
+            style="
+              font-family: &quot;Cinzel&quot;, serif;
+              font-size: 0.88rem;
+              letter-spacing: 0.12em;
+              color: var(--brown);
+              text-transform: uppercase;
+              margin-bottom: 20px;
+              text-align: center;
+            "
+          >
+            Пошаљите Поруку
+          </h3>
+          <div style="margin-bottom: 16px">
+            <input
+              type="text"
+              placeholder="Ваше Име"
+              style="
+                width: 100%;
+                padding: 10px 14px;
+                border: 1px solid var(--border);
+                background: var(--cream);
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1rem;
+                color: var(--text);
+                outline: none;
+              "
             />
           </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/02697779-8a23-4674-91c1-af1336f5ee98.jpeg"
+          <div style="margin-bottom: 16px">
+            <input
+              type="email"
+              placeholder="Е-Пошта"
+              style="
+                width: 100%;
+                padding: 10px 14px;
+                border: 1px solid var(--border);
+                background: var(--cream);
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1rem;
+                color: var(--text);
+                outline: none;
+              "
             />
           </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/02918707-3246-42db-a24b-3a7887244dd7.jpeg"
-            />
+          <div style="margin-bottom: 20px">
+            <textarea
+              placeholder="Ваша порука..."
+              rows="4"
+              style="
+                width: 100%;
+                padding: 10px 14px;
+                border: 1px solid var(--border);
+                background: var(--cream);
+                font-family: &quot;Cormorant Garamond&quot;, serif;
+                font-size: 1rem;
+                color: var(--text);
+                outline: none;
+                resize: vertical;
+              "
+            ></textarea>
           </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/1653c220-dac9-4929-bbb9-e5d4fdad43f5.jpeg"
-            />
+          <button
+            style="
+              width: 100%;
+              padding: 12px;
+              background: linear-gradient(135deg, #2c1a0e, #4a2c10);
+              color: var(--gold-light);
+              font-family: &quot;Cinzel&quot;, serif;
+              font-size: 0.82rem;
+              letter-spacing: 0.15em;
+              text-transform: uppercase;
+              border: 1px solid var(--gold);
+              cursor: pointer;
+            "
+          >
+            ☦ Пошаљи Поруку
+          </button>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+     МОДАЛИ (чланци)
+═══════════════════════════════════════ -->
+
+    <div
+      id="modal1"
+      class="modal-overlay"
+      onclick="closeModalOnOverlay(event, 'modal1')"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Васкршња литургија</h2>
+          <button class="modal-close" onclick="closeModal('modal1')">✕</button>
+        </div>
+        <div class="modal-body">
+          <span class="modal-date">12. априла 2026.</span>
+          <div class="modal-images">
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="osnovne slike/vaskrs-jaja.jpg"
+                alt="Архијерејска литургија"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="osnovne slike/vaskrs-otac-petar.jpeg"
+                alt="Архијерејска литургија"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="osnovne slike/vaskrs-slika.png"
+                alt="Архијерејска литургија"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
           </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/2e612fb4-57cb-45b6-8d27-2831ce7beaa4.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/3c30e55f-eb50-4667-80d7-dac990f8bb7f.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/461e5eb7-86ed-4ebb-b961-a44a7f705ef1.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/552a54ff-4344-4cf7-a407-8ff2a72a78f4.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/5f2f28a4-10fb-4225-9260-968d82ca93f4.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/866b5860-cc22-47ca-9a1d-c560fc3f4763.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/b4c2bcbd-110f-4d7f-85c3-d8852d8c953b.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/be42579d-c7c8-4fc4-8e6f-9f8e31c35139.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/d6d5eb34-4040-463d-8386-f021a4436059.jpeg"
-            />
-          </div>
-          <div class="gallery-item">
-            <img
-              src="./arhijerejska-liturgija-03032026/f601eefc-c1ef-4aeb-b35b-1ee508033cc5.jpeg"
-            />
+          <div class="modal-text">
+            <p>
+              Са радошћу вас обавештавамо да ће се у недељу 12. априла 2026.
+              године одржати Света Васркшња литургија у нашем храму са почетком
+              у 06:00.
+            </p>
+            <br />
+            <p>
+              Након богослужења позивамо верујући народ да се окупи испред
+              храма, да се сви послужимо и подружимо!
+            </p>
+            <br />
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="gallery-section" data-id="izgradnja" style="display: none">
-        <div class="section-title">
-          <h3>Галерија слика изградње храма</h3>
+    <div
+      id="modal2"
+      class="modal-overlay"
+      onclick="closeModalOnOverlay(event, 'modal2')"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Архијерејска Литургија – Посета Владике</h2>
+          <button class="modal-close" onclick="closeModal('modal2')">✕</button>
         </div>
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9437.jpeg" />
+        <div class="modal-body">
+          <span class="modal-date">☦ 03. март 2026.</span>
+          <div class="modal-images">
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="arhijerejska-liturgija-03032026/1.png"
+                alt="Архијерејска литургија"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="arhijerejska-liturgija-03032026/2.png"
+                alt="Архијерејска литургија"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="arhijerejska-liturgija-03032026/1653c220-dac9-4929-bbb9-e5d4fdad43f5.jpeg"
+                alt="Архијерејска литургија"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
           </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9438.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9436.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9437.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9434.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9435.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9448.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9449.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9450.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9451.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9452.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./izgradnja/IMG_9472.jpeg" />
+          <div class="modal-text">
+            <p>
+              У уторак, 13. марта 2026. године, у Храму Свете Тројице у
+              Книћанину служена је свечана Архијерејска Литургија. Богослужењу
+              је предводио Епископ банатски, окружен свештенством и ђаконима из
+              целе Епархије.
+            </p>
+            <br />
+            <p>
+              Храм је био испуњен верницима из Книћанина и околних парохија,
+              који су радосно дочекали свог Архипастира. Богослужење је текло
+              свечано и молитвено, уз дивно певање хора.
+            </p>
+            <br />
+            <p>
+              Верујући народ Книћанина је имао прилике да затражи благослов
+              нашег епископа банатског Никанора и чује беседу.
+            </p>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="gallery-section" data-id="bogosluzenje" style="display: none">
-        <div class="section-title">
-          <h3>Галерија слика Богослужења</h3>
+    <div
+      id="modal3"
+      class="modal-overlay"
+      onclick="closeModalOnOverlay(event, 'modal3')"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Свети Никола</h2>
+          <button class="modal-close" onclick="closeModal('modal3')">✕</button>
         </div>
-        <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_8689.jpeg" />
+        <div class="modal-body">
+          <span class="modal-date">☦ 19. децембар 2025</span>
+          <div class="modal-images">
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="sveti-nikola-2025/2.png"
+                alt="Свети Никола 2025"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="sveti-nikola-2025/1.png"
+                alt="Свети Никола 2025"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img
+                src="sveti-nikola-2025/3.png"
+                alt="Свети Никола 2025"
+                style="width: 100%; height: 100%; object-fit: contain"
+              />
+            </div>
           </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9456.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_8713.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9453.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9454.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9455.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9456.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9467.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9468.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9469.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9470.jpeg" />
-          </div>
-          <div class="gallery-item">
-            <img src="./bogosluzenje/IMG_9471.jpeg" />
+          <div class="modal-text">
+            <p>
+              19. децембра 2025. године у нашем храму се служила Света литургија
+              на празник Светог Николе.
+            </p>
+            <br />
+            <p>
+              У храму се сабрао велики број верујућег народа који је принео
+              колач, кољиво и вино.
+            </p>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="gallery-section" data-id="litija" style="display: none">
-        <div class="section-title">
-          <h3>Галерија слика Литија</h3>
+    <div
+      id="modal3"
+      class="modal-overlay"
+      onclick="closeModalOnOverlay(event, 'modal3')"
+    >
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Слава Свети Никола 2025.</h2>
+          <button class="modal-close" onclick="closeModal('modal3')">✕</button>
         </div>
-        <div class="gallery-grid">
-          <div class="gallery-item"><img src="./litija/IMG_9463.jpeg" /></div>
-          <div class="gallery-item"><img src="./litija/IMG_9464.jpeg" /></div>
-          <div class="gallery-item"><img src="./litija/IMG_9465.jpeg" /></div>
-          <div class="gallery-item"><img src="./litija/IMG_9466.jpeg" /></div>
+        <div class="modal-body">
+          <span class="modal-date">☦ 19. Децембар 2025.</span>
+          <div class="modal-images">
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img src="sveti-nikola-2025/1.png" alt="" />
+            </div>
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img src="sveti-nikola-2025/3.png" alt="" />
+            </div>
+            <div
+              style="
+                background: var(--cream-dark);
+                height: 130px;
+                border: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.5rem;
+              "
+            >
+              <img src="sveti-nikola-2025/2.png" alt="" />
+            </div>
+          </div>
+          <div class="modal-text">
+            <p>
+              19. децембра 2025. године, у нашем храму се одржала Света
+              литургија, на празник Светог Николе.
+            </p>
+            <br />
+            <p>
+              Верујући народ се сакупио у великом броју, те је имао прилике да
+              освешта колач уз вино и кољиво.
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- FOOTER -->
-    <div class="bottom-container">
-      <a
-        href="https://www.instagram.com/hram.svete.trojice.knicanin/"
-        class="btn"
-        target="_blank"
-        >Инстаграм страница</a
-      >
-      <a href="https://www.viber.com/" class="btn" target="_blank"
-        >Вајбер група</a
-      >
-      <a
-        href="https://maps.app.goo.gl/aXDA1NPLhJdCWkgaA"
-        class="btn"
-        target="_blank"
-        >Локација</a
-      >
-
-      <button id="back-home-btn" class="btn" style="display: none">
-        Повратак на почетну страну
-      </button>
-    </div>
-
-    <!-- LIGHTBOX -->
-    <div id="lightbox">
-      <button id="prev">❮</button>
-      <img id="lightbox-img" />
-      <button id="next">❯</button>
-    </div>
+    <footer>
+      <div class="footer-cross">☦</div>
+      <p>Храм Свете Тројице · Книћанин · Епархија Банатска</p>
+      <p style="margin-top: 6px; opacity: 0.6; font-size: 0.82rem">
+        Српска Православна Црква ·
+        <a href="https://www.eparhijabanatska.rs/" target="_blank"
+          >Епархија Банатска</a
+        >
+      </p>
+    </footer>
 
     <script>
-      // DATUM VREME
-      function updateTime() {
-        const now = new Date();
-        const el = document.getElementById("datum-vreme");
-        if (!el) return;
-        el.innerText = new Intl.DateTimeFormat("sr-RS", {
-          timeZone: "Europe/Belgrade",
-          dateStyle: "short",
-          timeStyle: "medium",
-        }).format(now);
-      }
-      updateTime();
-      setInterval(updateTime, 1000);
+      function switchTab(name, btn) {
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
 
-      // READ MORE
-      const texts = document.querySelectorAll(".read-more-text");
-      const buttons = document.querySelectorAll(".read-more-btn");
-      texts.forEach((text, i) => {
-        const full = text.innerHTML;
-        const limit = 300;
-        if (full.length > limit) {
-          const short = full.slice(0, limit) + "...";
-          text.innerHTML = short;
-          let expanded = false;
-          buttons[i].addEventListener("click", () => {
-            expanded = !expanded;
-            text.innerHTML = expanded ? full : short;
-            buttons[i].innerText = expanded ? "Скупи текст" : "Прошири текст";
+        document.getElementById("tab-" + name).classList.add("active");
+        btn.classList.add("active");
+        localStorage.setItem("activeTab", name);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTab = localStorage.getItem("activeTab");
+
+        if (savedTab) {
+          const btns = document.querySelectorAll(".tab-btn");
+
+          btns.forEach((btn) => {
+            if (btn.getAttribute("onclick").includes(savedTab)) {
+              switchTab(savedTab, btn);
+            }
           });
         }
       });
 
-      // GALERIJA
-      const backHomeBtn = document.getElementById("back-home-btn");
-      function updateBackHomeBtn(id) {
-        backHomeBtn.style.display = id ? "inline-block" : "none";
+      function openModal(id) {
+        document.getElementById(id).classList.add("open");
+        document.body.style.overflow = "hidden";
       }
-      function showGallery(id) {
-        const middle = document.querySelector(".middle-container");
-        const thumbs = document.querySelector(".gallery-grid");
-        const galleries = document.querySelectorAll(".gallery-section");
-        updateBackHomeBtn(id);
-        if (id) {
-          window.scrollTo(0, 0);
-          middle.style.display = "none";
-          thumbs.style.display = "none";
-          galleries.forEach(
-            (g) => (g.style.display = g.dataset.id === id ? "block" : "none"),
-          );
-        } else {
-          middle.style.display = "flex";
-          thumbs.style.display = "flex";
-          galleries.forEach((g) => (g.style.display = "none"));
-        }
-      }
-      document.querySelectorAll(".gallery-link").forEach((link) =>
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const id = link.dataset.target;
-          showGallery(id);
-          history.pushState({ gallery: id }, "", "#" + id);
-        }),
-      );
-      document.querySelectorAll(".close-gallery").forEach((btn) =>
-        btn.addEventListener("click", () => {
-          showGallery(null);
-          history.pushState({}, "", window.location.pathname);
-        }),
-      );
-      backHomeBtn.addEventListener("click", () => {
-        showGallery(null);
-        history.pushState({}, "", window.location.pathname);
-      });
-      window.addEventListener("popstate", (e) => {
-        const id = e.state?.gallery || window.location.hash.slice(1) || null;
-        showGallery(id);
-      });
 
-      // LIGHTBOX
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      const prev = document.getElementById("prev");
-      const next = document.getElementById("next");
-      let images = [],
-        index = 0;
-      document.querySelectorAll(".gallery-section").forEach((section) => {
-        const imgs = [...section.querySelectorAll("img")];
-        const srcs = imgs.map((img) => img.src);
-        imgs.forEach((img, i) => {
-          img.style.cursor = "pointer";
-          img.addEventListener("click", () => {
-            images = srcs;
-            index = i;
-            lightboxImg.src = images[index];
-            lightbox.style.display = "flex";
-          });
-        });
-      });
-      prev.addEventListener("click", (e) => {
-        e.stopPropagation();
-        index--;
-        if (index < 0) index = images.length - 1;
-        lightboxImg.src = images[index];
-      });
-      next.addEventListener("click", (e) => {
-        e.stopPropagation();
-        index++;
-        if (index >= images.length) index = 0;
-        lightboxImg.src = images[index];
-      });
-      lightbox.addEventListener("click", () => {
-        lightbox.style.display = "none";
-      });
+      function closeModal(id) {
+        document.getElementById(id).classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function closeModalOnOverlay(e, id) {
+        if (e.target === document.getElementById(id)) closeModal(id);
+      }
+
       document.addEventListener("keydown", (e) => {
-        if (lightbox.style.display === "flex") {
-          if (e.key === "ArrowRight") next.click();
-          if (e.key === "ArrowLeft") prev.click();
-          if (e.key === "Escape") lightbox.style.display = "none";
+        if (e.key === "Escape") {
+          document.querySelectorAll(".modal-overlay.open").forEach((m) => {
+            m.classList.remove("open");
+            document.body.style.overflow = "";
+          });
         }
       });
     </script>
