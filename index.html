@@ -9,6 +9,40 @@
       rel="stylesheet"
     />
     <style>
+      .modal {
+        display: inline-block;
+        max-width: none;
+        width: auto;
+        height: auto;
+      }
+      .gallery-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.4);
+        border: none;
+        color: white;
+        font-size: 2rem;
+        padding: 10px 14px;
+        cursor: pointer;
+        z-index: 10;
+      }
+
+      .gallery-nav.left {
+        left: 10px;
+      }
+
+      .gallery-nav.right {
+        right: 10px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 10px;
+        right: 14px;
+        z-index: 11;
+      }
+
       :root {
         --gold: #c9952a;
         --gold-light: #e8c06a;
@@ -788,6 +822,7 @@
           viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <!-- krugovi -->
           <circle
             cx="50"
             cy="50"
@@ -806,47 +841,17 @@
             stroke-width="0.7"
             opacity="0.25"
           />
-          <!-- Orthodox cross -->
-          <line
-            x1="50"
-            y1="12"
-            x2="50"
-            y2="88"
-            stroke="#C9952A"
-            stroke-width="5"
-            stroke-linecap="round"
+
+          <!-- PRAVOSLAVNI KRST (pun oblik) -->
+          <path
+            fill="#C9952A"
+            d="
+    M46 10 H54 V90 H46 Z
+    M28 38 H72 V44 H28 Z
+    M40 20 H60 V26 H40 Z
+    M38 64 L66 72 L63 78 L35 70 Z
+  "
           />
-          <line
-            x1="24"
-            y1="36"
-            x2="76"
-            y2="36"
-            stroke="#C9952A"
-            stroke-width="5"
-            stroke-linecap="round"
-          />
-          <line
-            x1="35"
-            y1="54"
-            x2="65"
-            y2="54"
-            stroke="#C9952A"
-            stroke-width="3.5"
-            stroke-linecap="round"
-          />
-          <!-- Slanted bottom bar -->
-          <line
-            x1="32"
-            y1="72"
-            x2="68"
-            y2="66"
-            stroke="#C9952A"
-            stroke-width="3.5"
-            stroke-linecap="round"
-          />
-          <!-- Corner ornaments -->
-          <circle cx="50" cy="12" r="2.5" fill="#C9952A" />
-          <circle cx="50" cy="88" r="2.5" fill="#C9952A" />
         </svg>
         <div class="header-text">
           <h1>Храм Свете Тројице</h1>
@@ -880,7 +885,9 @@
     <div class="hero" style="height: 200px; padding: 5px; overflow: hidden">
       <span class="hero-ornament">✦ ✦ ✦</span>
       <h2>Слава Светој Тројици</h2>
-      <p>Са благословом оца Петра Шљокића, добродошли!</p>
+      <p style="font-size: 1.2rem">
+        Са благословом оца Петра Шљокића, добродошли!
+      </p>
     </div>
 
     <!-- ═══════════════════════════════════════
@@ -963,91 +970,62 @@
         <h2 class="section-title">Галерија</h2>
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img
-              src="sveti-nikola-2025/3.png"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="sveti-nikola-2025/3.png" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="bogosluzenje/1.png"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="bogosluzenje/1.png" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="litija/IMG_9463.jpeg"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="litija/IMG_9463.jpeg" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
             <img
               src="arhijerejska-liturgija-03032026/1.png"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
+              class="gallery-img"
             />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="izgradnja/IMG_9434.jpeg"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="izgradnja/IMG_9434.jpeg" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="osnovne slike/1.png"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="osnovne slike/1.png" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="bogosluzenje/IMG_9454.jpeg"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="bogosluzenje/IMG_9454.jpeg" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="litija/IMG_9465.jpeg"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="litija/IMG_9465.jpeg" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="bogosluzenje/IMG_9467.jpeg"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="bogosluzenje/IMG_9467.jpeg" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="litija/IMG_9466.jpeg"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="litija/IMG_9466.jpeg" class="gallery-img" />
           </div>
+
           <div class="gallery-item">
             <img
               src="arhijerejska-liturgija-03032026/2.png"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
+              class="gallery-img"
             />
           </div>
+
           <div class="gallery-item">
-            <img
-              src="bogosluzenje/IMG_9469.jpeg"
-              alt=""
-              style="width: 100%; height: 100%; object-fit: contain"
-            />
+            <img src="bogosluzenje/IMG_9469.jpeg" class="gallery-img" />
           </div>
         </div>
+
         <div class="ornament">✦ ✦ ✦</div>
+
         <p
           style="
             text-align: center;
@@ -1067,33 +1045,31 @@
 ═══════════════════════════════════════ -->
     <div id="tab-bogosluzenja" class="tab-content">
       <div class="content-wrap">
-        <h2 class="section-title">Распоред Богослужења - Март 2026.</h2>
+        <h2 class="section-title">Распоред Богослужења - Април 2026.</h2>
 
         <div class="schedule-wrap">
           <div class="schedule-card">
-            <h3>Недеља - 01.03.2026.</h3>
+            <h3>Субота (Врбица) - 04.04.2026.</h3>
             <div class="schedule-row"></div>
             <div class="schedule-row">
-              <span class="schedule-service">Света Литургија</span>
+              <span class="schedule-service">Литургија</span>
+              <span class="schedule-time">9:00</span>
+              <span class="schedule-service">Литија</span>
+              <span class="schedule-time">15:00</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Недеља (Цвети) - 05.04.2026.</h3>
+            <div class="schedule-row"></div>
+            <div class="schedule-row">
+              <span class="schedule-service">Литургија</span>
               <span class="schedule-time">9:00</span>
             </div>
           </div>
 
           <div class="schedule-card">
-            <h3>Уторак - 03.03.2026.</h3>
-            <div class="schedule-row">
-              <span class="schedule-service"
-                >Света Архијерејска литургија, исповест у 07:00, литургија у
-                07:45 <br /><br />*Моле се верници који се причешћују да дођу
-                пре литургије због исповести, исповести у току литургије неће
-                бити!</span
-              >
-              <span class="schedule-time">07:45</span>
-            </div>
-          </div>
-
-          <div class="schedule-card">
-            <h3>Субота - 07.03.2026.</h3>
+            <h3>Уторак (Благовести)</h3>
             <div class="schedule-row">
               <span class="schedule-service">Литургија</span>
               <span class="schedule-time">09:00</span>
@@ -1101,7 +1077,25 @@
           </div>
 
           <div class="schedule-card">
-            <h3>Недеља - 15.03.2026.</h3>
+            <h3>Велики Четвртак - 09.04.2026.</h3>
+            <div class="schedule-row">
+              <span class="schedule-service">Литургија</span>
+              <span class="schedule-time">09:00</span>
+              <span class="schedule-service">Бденије</span>
+              <span class="schedule-time">16:00</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Велики Петак</h3>
+            <div class="schedule-row">
+              <span class="schedule-service">Бденије</span>
+              <span class="schedule-time">16:00</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Велика Субота - 11.04.2026.</h3>
             <div class="schedule-row">
               <span class="schedule-service">Литургија</span>
               <span class="schedule-time">9:00</span>
@@ -1109,7 +1103,15 @@
           </div>
 
           <div class="schedule-card">
-            <h3>Субота - 21.03.2026.</h3>
+            <h3>Недеља ВАСКРС 12.04.2026.</h3>
+            <div class="schedule-row">
+              <span class="schedule-service">Литургија</span>
+              <span class="schedule-time">06:00</span>
+            </div>
+          </div>
+
+          <div class="schedule-card">
+            <h3>Субота - 18.04.2026.</h3>
             <div class="schedule-row">
               <span class="schedule-service">Литургија</span>
               <span class="schedule-time">9:00</span>
@@ -1117,7 +1119,7 @@
           </div>
 
           <div class="schedule-card">
-            <h3>Недеља - 29.03.2026.</h3>
+            <h3>Недеља - 26.04.2026.</h3>
             <div class="schedule-row">
               <span class="schedule-service">Литургија</span>
               <span class="schedule-time">9:00</span>
@@ -1145,7 +1147,7 @@
             <h3>Радови у Току</h3>
             <ul class="works-list">
               <li>Уређење унутрашњости</li>
-              <li>Сакупљање пелета за грејање</li>
+              <li>Сакупљање пелета за грејанје</li>
             </ul>
           </div>
 
@@ -1159,8 +1161,12 @@
         </div>
 
         <div class="bank-box">
-          <div class="bank-label">
-            За помоћ храму и жиро рачун за донације, контактирајте оца Петра
+          <div class="bank-label" style="font-size: 18px">
+            Жиро рачун за уплату донације нашем храму - 340000001100226989
+            <br /><br />
+            НАПОМЕНА: Нагласити да је за изградњу храма у Книћанину <br /><br />
+            Прималац: СПЦ Општина Перлез Адреса: Краља Петра I - 1, 23260 Перлез
+            Матични број - 08802572, ПИБ - 104876225s
           </div>
           <!--           <div class="account-number">160 – XXXX – XX</div>
           <div class="bank-name">Banca Intesa / Raiffeisen Bank</div>
@@ -1370,7 +1376,7 @@
           <button class="modal-close" onclick="closeModal('modal1')">✕</button>
         </div>
         <div class="modal-body">
-          <span class="modal-date">12. априла 2026.</span>
+          <span class="modal-date">12. април 2026.</span>
           <div class="modal-images">
             <div
               style="
@@ -1508,14 +1514,14 @@
     </div>
 
     <div
-      id="modal3"
+      id="modal4"
       class="modal-overlay"
-      onclick="closeModalOnOverlay(event, 'modal3')"
+      onclick="closeModalOnOverlay(event, 'modal4')"
     >
       <div class="modal">
         <div class="modal-header">
           <h2>Слава Свети Никола 2025.</h2>
-          <button class="modal-close" onclick="closeModal('modal3')">✕</button>
+          <button class="modal-close" onclick="closeModal('modal4')">✕</button>
         </div>
         <div class="modal-body">
           <span class="modal-date"> 19. Децембар 2025.</span>
@@ -1578,8 +1584,8 @@
     <!-- FOOTER -->
     <footer>
       <div class="footer-cross"></div>
-      <p>Храм Свете Тројице · Книћанин · Епархија Банатска</p>
-      <p style="margin-top: 6px; opacity: 0.6; font-size: 0.82rem">
+      <p style="font-size: 1.6rem">Храм Свете Тројице · Книћанин</p>
+      <p style="margin-top: 6px; opacity: 0.6; font-size: 1rem">
         Српска Православна Црква ·
         <a href="https://www.eparhijabanatska.rs/" target="_blank"
           >Епархија Банатска</a
@@ -1588,6 +1594,85 @@
     </footer>
 
     <script>
+      let galleryImages = [];
+      let currentIndex = 0;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // pokupi slike
+        galleryImages = Array.from(
+          document.querySelectorAll(".gallery-img"),
+        ).map((img) => img.src);
+
+        // dodaj klik na svaki .gallery-item
+        document.querySelectorAll(".gallery-item").forEach((item, index) => {
+          item.addEventListener("click", () => {
+            openGallery(index);
+          });
+        });
+      });
+      // Kada se DOM učita
+      document.addEventListener("DOMContentLoaded", () => {
+        // ostali kod...
+
+        // Dodaj event na overlay da zatvori kada klikneš na pozadinu
+        document
+          .getElementById("galleryModal")
+          .addEventListener("click", (e) => {
+            if (e.target === document.getElementById("galleryModal")) {
+              closeGallery();
+            }
+          });
+      });
+
+      function openGallery(index) {
+        currentIndex = index;
+        const imgSrc = galleryImages[index];
+        const modal = document.querySelector(".modal");
+        const modalImg = document.getElementById("galleryImage");
+        modalImg.src = imgSrc;
+
+        modal.style.width = "auto";
+        modal.style.height = "auto";
+        modal.style.maxWidth = "90vw";
+        modal.style.maxHeight = "80vh";
+
+        // Otvori galeriju
+        document.getElementById("galleryModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function openGallery(index) {
+        currentIndex = index;
+        document.getElementById("galleryImage").src = galleryImages[index];
+        document.getElementById("galleryModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeGallery() {
+        document.getElementById("galleryModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        document.getElementById("galleryImage").src =
+          galleryImages[currentIndex];
+      }
+
+      function prevImage() {
+        currentIndex =
+          (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        document.getElementById("galleryImage").src =
+          galleryImages[currentIndex];
+      }
+
+      // ESC zatvara
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeGallery();
+
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "ArrowLeft") prevImage();
+      });
       function switchTab(name, btn) {
         document
           .querySelectorAll(".tab-content")
@@ -1638,5 +1723,24 @@
         }
       });
     </script>
+    <div id="galleryModal" class="modal-overlay">
+      <div class="modal" style="max-width: 900px; position: relative">
+        <!-- CLOSE -->
+        <button class="modal-close" onclick="closeGallery()">✕</button>
+
+        <!-- LEFT -->
+        <button class="gallery-nav left" onclick="prevImage()">❮</button>
+
+        <!-- IMAGE -->
+        <img
+          id="galleryImage"
+          src=""
+          style="width: 100%; max-height: 80vh; object-fit: contain"
+        />
+
+        <!-- RIGHT -->
+        <button class="gallery-nav right" onclick="nextImage()">❯</button>
+      </div>
+    </div>
   </body>
 </html>
